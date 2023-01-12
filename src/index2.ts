@@ -1,33 +1,36 @@
 import {SDK} from '@ringcentral/sdk';
-import {Subscriptions} from '@ringcentral/subscriptions';
+import RingCentral from '@rc-ex/core';
+import WebSocketExtension from '@rc-ex/ws';
+import RcSdkExtension from '@rc-ex/rcsdk';
 
-// init
 const sdk = new SDK({
   server: process.env.RINGCENTRAL_SERVER_URL,
   clientId: process.env.RINGCENTRAL_CLIENT_ID,
   clientSecret: process.env.RINGCENTRAL_CLIENT_SECRET,
 });
 const platform = sdk.platform();
-const subscriptions = new Subscriptions({
-  sdk: sdk,
-});
+const rc = new RingCentral();
+const rcsdkExtension = new RcSdkExtension({rcSdk: sdk});
+const wsExtension = new WebSocketExtension();
 
 const main = async () => {
-  // login
   await platform.login({
     username: process.env.RINGCENTRAL_USERNAME,
     extension: process.env.RINGCENTRAL_EXTENSION,
     password: process.env.RINGCENTRAL_PASSWORD,
   });
 
+  // install the extensions
+  await rc.installExtension(rcsdkExtension);
+  await rc.installExtension(wsExtension);
+
   // subscribe
-  const subscription = subscriptions.createSubscription();
-  subscription.on(subscription.events.notification, evt => {
-    console.log(JSON.stringify(evt, null, 2));
-  });
-  await subscription
-    .setEventFilters(['/restapi/v1.0/account/~/extension/~/message-store'])
-    .register();
+  await wsExtension.subscribe(
+    ['/restapi/v1.0/account/~/extension/~/message-store'],
+    evt => {
+      console.log(JSON.stringify(evt, null, 2));
+    }
+  );
 
   // trigger events
   const r = await platform.get('/restapi/v1.0/account/~/extension/~');

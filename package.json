@@ -3,6 +3,10 @@
   "scripts": {
     "test": "ts-node -r dotenv-override-true/config src/index.ts"
   },
+  "dependencies": {
+    "@ringcentral/sdk": "^4.7.3",
+    "@ringcentral/subscriptions": "^4.7.3"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "dotenv-override-true": "^6.2.2",

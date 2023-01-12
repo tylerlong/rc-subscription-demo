@@ -17,6 +17,8 @@ const main = async () => {
     extension: process.env.RINGCENTRAL_EXTENSION,
     password: process.env.RINGCENTRAL_PASSWORD,
   });
+
+  // subscribe
   const subscription = subscriptions.createSubscription();
   subscription.on(subscription.events.notification, evt => {
     console.log(JSON.stringify(evt, null, 2));
@@ -24,6 +26,8 @@ const main = async () => {
   await subscription
     .setEventFilters(['/restapi/v1.0/account/~/extension/~/message-store'])
     .register();
+
+  // trigger events
   const r = await platform.get('/restapi/v1.0/account/~/extension/~');
   const ext = await r.json();
   platform.post('/restapi/v1.0/account/~/extension/~/company-pager', {

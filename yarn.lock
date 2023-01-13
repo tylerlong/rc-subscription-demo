@@ -121,20 +121,20 @@
     axios "^1.2.2"
     qs "^6.11.0"
 
-"@rc-ex/rcsdk@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@rc-ex/rcsdk/-/rcsdk-1.0.1-alpha.0.tgz#f2b57adc86fac236e38b3392b14007b06cbb769b"
-  integrity sha512-uixuW0xUka7wQ2NQDffBUdzNH8iKw9iZZx1wE9vFsP0unAV9tm0TZM5kHGKtJRaPc6TzBoI1v5Vt3py0zW1qSg==
+"@rc-ex/rcsdk@^1.0.4-alpha.0":
+  version "1.0.4-alpha.0"
+  resolved "https://registry.yarnpkg.com/@rc-ex/rcsdk/-/rcsdk-1.0.4-alpha.0.tgz#b7a157c2540855021855d43103e0eab587c39a7f"
+  integrity sha512-ygoTTw9UX6jxwms+SEZa9L4qxPt5R2URtVfYqO9/Y5Gfe44t36X9vJ3jlqxQ9mMhT202qj+zJIcgsD8gIorZ0A==
 
-"@rc-ex/ws@^1.0.1-alpha.0":
-  version "1.0.1-alpha.0"
-  resolved "https://registry.yarnpkg.com/@rc-ex/ws/-/ws-1.0.1-alpha.0.tgz#7b72033ff5d7ce6cac37a7b03c64d6355974ea2d"
-  integrity sha512-CvnvI4NErIM4ybAD00UgMDcAHnq7CvetVyVUgOzDy35CzCXakpEbTguxlk/hLEAJQ3i40lgKPwSZnc7MyFl3fg==
+"@rc-ex/ws@^1.0.4-alpha.0":
+  version "1.0.4-alpha.0"
+  resolved "https://registry.yarnpkg.com/@rc-ex/ws/-/ws-1.0.4-alpha.0.tgz#903840a3f365802507caff6626b479cdfe3c1e38"
+  integrity sha512-08sBeQ3/MQ4n4cRDQWXDUd5n4z0TRs9IkHKQKgGGY9I+KrVxWanNCR5TNMGA+3/mPDSp6ABph15etckRC+WeeA==
   dependencies:
     "@types/lodash" "^4.14.191"
     "@types/ws" "^8.5.4"
     http-status-codes "^2.2.0"
-    hyperid "^3.0.1"
+    hyperid "^3.1.0"
     isomorphic-ws "^5.0.0"
     lodash "^4.17.21"
     wait-for-async "^0.6.0"
@@ -1216,7 +1216,7 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-hyperid@^3.0.1:
+hyperid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/hyperid/-/hyperid-3.1.0.tgz#c7a989590901c0a5f11847c4090ff52003ec5be9"
   integrity sha512-ejqC0aqua7caNiOAVIFnRCwFPKaSq9ev+a3aOG7A8dATW8aaUWpSpdV6S3jZywpg/7ysVsdzO6H+xS4aFBRL/w==
@@ -2491,10 +2491,10 @@ yargs-parser@^20.2.3:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
-yarn-upgrade-all@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/yarn-upgrade-all/-/yarn-upgrade-all-0.7.1.tgz#167a5a78127c7051c4ed15396bd5f68e3b5cc744"
-  integrity sha512-KoYfSs8jGH5fp4+12ezF3uMMIxx70X8l9efmUvsI0KQmmF4nVssEmXw4Q2aZVrRZHF30b3+cyzMIp8iU6sb9aw==
+yarn-upgrade-all@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/yarn-upgrade-all/-/yarn-upgrade-all-0.7.2.tgz#5d2afa9230661c55f22d3f848f22258db732ae20"
+  integrity sha512-iVxmoBuNdpxeahAIehJ039Pp6S8zQ/qTENQRMV5hp7x/2tLGUzytCODIKZFjfUwcRRKT3boGgHheUEWC7+VlQw==
 
 yn@3.1.1:
   version "3.1.1"

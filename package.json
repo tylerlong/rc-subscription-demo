@@ -10,7 +10,8 @@
     "@rc-ex/rcsdk": "^1.0.4-alpha.0",
     "@rc-ex/ws": "^1.0.4-alpha.0",
     "@ringcentral/sdk": "^4.7.3",
-    "@ringcentral/subscriptions": "^4.7.3"
+    "@ringcentral/subscriptions": "^4.7.3",
+    "wait-for-async": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

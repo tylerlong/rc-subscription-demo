@@ -3,17 +3,18 @@ import EventEmitter from 'events';
 import RingCentral from '@rc-ex/core';
 import RcSdkExtension from '@rc-ex/rcsdk';
 import WebSocketExtension from '@rc-ex/ws';
+import waitFor from 'wait-for-async';
 
 export class Subscription extends EventEmitter {
-  sdk: SDK;
+  subscriptions: Subscriptions;
   events = {
     notification: 'notification',
   };
   eventFilters!: string[];
 
-  constructor(options: {sdk: SDK}) {
+  constructor(options: {subscriptions: Subscriptions}) {
     super();
-    this.sdk = options.sdk;
+    this.subscriptions = options.subscriptions;
   }
 
   setEventFilters(eventFilters: string[]) {
@@ -22,11 +23,9 @@ export class Subscription extends EventEmitter {
   }
 
   async register() {
-    const rc = new RingCentral();
-    const rcSdkExtension = new RcSdkExtension({rcSdk: this.sdk});
-    await rc.installExtension(rcSdkExtension);
+    await this.subscriptions.init();
     const wsExtension = new WebSocketExtension();
-    await rc.installExtension(wsExtension);
+    await this.subscriptions.rc.installExtension(wsExtension);
     wsExtension.subscribe(this.eventFilters, event => {
       this.emit(this.events.notification, event);
     });
@@ -34,12 +33,31 @@ export class Subscription extends EventEmitter {
 }
 
 export class Subscriptions {
-  sdk: SDK;
+  status = 'new'; // new, in-progress, ready
+  rc: RingCentral;
+  rcSdkExtension: RcSdkExtension;
+
   constructor(options: {sdk: SDK}) {
-    this.sdk = options.sdk;
+    this.rc = new RingCentral();
+    this.rcSdkExtension = new RcSdkExtension({rcSdk: options.sdk});
+  }
+
+  async init() {
+    if (this.status === 'ready') {
+      return;
+    }
+    if (this.status === 'in-progress') {
+      await waitFor({
+        condition: () => this.status === 'ready',
+      });
+      return;
+    }
+    this.status = 'in-progress';
+    await this.rc.installExtension(this.rcSdkExtension);
+    this.status = 'ready';
   }
 
   createSubscription(): Subscription {
-    return new Subscription({sdk: this.sdk});
+    return new Subscription({subscriptions: this});
   }
 }

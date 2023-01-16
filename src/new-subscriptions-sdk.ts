@@ -24,11 +24,12 @@ export class Subscription extends EventEmitter {
 
   async register() {
     await this.subscriptions.init();
-    const wsExtension = new WebSocketExtension();
-    await this.subscriptions.rc.installExtension(wsExtension);
-    wsExtension.subscribe(this.eventFilters, event => {
-      this.emit(this.events.notification, event);
-    });
+    return await this.subscriptions.wsExtension.subscribe(
+      this.eventFilters,
+      event => {
+        this.emit(this.events.notification, event);
+      }
+    );
   }
 }
 
@@ -36,10 +37,12 @@ export class Subscriptions {
   status = 'new'; // new, in-progress, ready
   rc: RingCentral;
   rcSdkExtension: RcSdkExtension;
+  wsExtension: WebSocketExtension;
 
   constructor(options: {sdk: SDK}) {
     this.rc = new RingCentral();
     this.rcSdkExtension = new RcSdkExtension({rcSdk: options.sdk});
+    this.wsExtension = new WebSocketExtension();
   }
 
   async init() {
@@ -54,6 +57,7 @@ export class Subscriptions {
     }
     this.status = 'in-progress';
     await this.rc.installExtension(this.rcSdkExtension);
+    await this.rc.installExtension(this.wsExtension);
     this.status = 'ready';
   }
 

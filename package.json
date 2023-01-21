@@ -3,14 +3,15 @@
   "scripts": {
     "test": "ts-node -r dotenv-override-true/config src/index.ts",
     "test2": "ts-node -r dotenv-override-true/config src/index2.ts",
-    "test3": "ts-node -r dotenv-override-true/config src/index3.ts"
+    "test3": "ts-node -r dotenv-override-true/config src/index3.ts",
+    "test4": "ts-node -r dotenv-override-true/config src/index4.ts"
   },
   "dependencies": {
     "@rc-ex/core": "^1.0.1-alpha.0",
     "@rc-ex/rcsdk": "^1.0.4-alpha.0",
     "@rc-ex/ws": "^1.0.4-alpha.0",
     "@ringcentral/sdk": "^4.7.3",
-    "@ringcentral/subscriptions": "^4.7.3",
+    "@ringcentral/subscriptions": "file:/Users/tyler.liu/src/ts/ringcentral-js/subscriptions",
     "wait-for-async": "^0.6.0"
   },
   "devDependencies": {

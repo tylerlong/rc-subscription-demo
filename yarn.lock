@@ -142,8 +142,10 @@
     is-plain-object "^2.0.4"
     node-fetch "^2.6.7"
 
-"@ringcentral/subscriptions@file:../ringcentral-js/subscriptions":
-  version "0.0.0"
+"@ringcentral/subscriptions@0.0.1-master.3972248066.121.0":
+  version "0.0.1-master.3972248066.121.0"
+  resolved "https://registry.yarnpkg.com/@ringcentral/subscriptions/-/subscriptions-0.0.1-master.3972248066.121.0.tgz#f4ac34bd8b1f6abab03ee95d3aa34603c16dd090"
+  integrity sha512-dpjfbSaZnFZoZSFGMoLxyiY78vuQ2eENbpGgD4xtIn+eLWGYzk7o172aMFplkYYhVXz/GSMHu6duyx9bXFFrZA==
   dependencies:
     "@rc-ex/core" "^1.0.1-alpha.0"
     "@rc-ex/rcsdk" "^1.0.4-alpha.0"

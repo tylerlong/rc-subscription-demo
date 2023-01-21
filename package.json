@@ -11,7 +11,7 @@
     "@rc-ex/rcsdk": "^1.0.4-alpha.0",
     "@rc-ex/ws": "^1.0.4-alpha.0",
     "@ringcentral/sdk": "^4.7.3",
-    "@ringcentral/subscriptions": "file:/Users/tyler.liu/src/ts/ringcentral-js/subscriptions",
+    "@ringcentral/subscriptions": "0.0.1-master.3972248066.121.0",
     "wait-for-async": "^0.6.0"
   },
   "devDependencies": {
